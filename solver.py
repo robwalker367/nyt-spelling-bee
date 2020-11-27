@@ -27,10 +27,12 @@ while i < 7:
   x = input("Letter " + str(i) + ": ")
   if x in letters:
     print("You've already entered this letter!")
+  elif not x.isalpha():
+    print("Please enter a letter.")
   else:
     letters.append(x.lower())
     i += 1
-print("You have entered the following non-mandatory letters: " + ", ".join(letters))
+print("You entered the non-mandatory letters: " + ", ".join(letters))
 
 print("Finding words... ", end='', flush=True)
 
