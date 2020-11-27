@@ -1,13 +1,13 @@
 
 def construct_trie():
   root = dict()
-  with open("words_alpha.txt", "r") as f:
+  with open("scrabble-dictionary.txt", "r") as f:
     words = f.read().splitlines()
     for word in words:
       current_dict = root
       for letter in word:
-        current_dict = current_dict.setdefault(letter, {})
-      current_dict["end"] = word
+        current_dict = current_dict.setdefault(letter.lower(), {})
+      current_dict["end"] = word.lower()
   return root
 
 print("NYT Spelling Bee Solver (11/21/2020) -- Rob Walker")
@@ -17,7 +17,7 @@ trie = construct_trie()
 
 print(" done!")
 
-mandatory_letter = input("Mandatory letter: ")
+mandatory_letter = input("Mandatory letter: ").lower()
 print("You entered the mandatory letter: " + mandatory_letter.lower())
 
 print("Please enter the other letters.")
